@@ -2,6 +2,7 @@
 
 TensorFlow.js란? 
 
+<img src="https://github.com/yeonghoon123/Study-tensorflow.js/blob/main/gitimages/tensorflowLogo.png">
 자바스크립트로 머신 러닝 모델을 개발 및 학습시키고 브라우저나 Node.js에 배포하는 라이브러리다.
 
 
