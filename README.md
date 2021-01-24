@@ -32,6 +32,24 @@ TensorFlow.js란?
 
 <br>
 온도가 21,22,23,24일때 
-필요한 레몬 개수는 42,44,46,48개 정도 필요로한다 이것을 데이터로 기계에게 학습시켰을때
+필요한 레몬 개수는 42,44,46,48개 정도 필요로한다 이것을 데이터로 기계에게 100번 학습 시켰을때
 
-<img src="">
+<img src="https://github.com/yeonghoon123/Study-tensorflow.js/blob/main/gitimages/first100play.PNG">
+
+<br>
+결과가 정확하지 않았다. 그래서 10000번 학습을 시키니
+
+<img src="https://github.com/yeonghoon123/Study-tensorflow.js/blob/main/gitimages/10000play.PNG">
+
+결과와 거의 일치한 값이 나오게 된다.
+
+그 다음은 학습한 기계에게 다음주온도를 제공하였다,
+15,16,17,18도룰 주었을때 
+
+<br>
+<br>
+
+<img src="https://github.com/yeonghoon123/Study-tensorflow.js/blob/main/gitimages/endLearnandPlay.PNG">
+
+으로 결과가 일치하게 된다.
+
