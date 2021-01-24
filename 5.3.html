@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script
+            src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+    </head>
+    <body>
+        <script>
+            //수집한 데이터
+            let 온도 = [21, 22, 23, 24];
+            let 판매량 = [42, 44, 46, 48];
+            let 원인 = tf.tensor(온도);
+            let 결과 = tf.tensor(판매량);
+
+            //모델 만들기
+            let X = tf.input({shape: [1]});
+            let Y = tf
+                .layers
+                .dense({units: 1})
+                .apply(X);
+            let model = tf.model({inputs: X, outputs: Y});
+            let compileParam = {
+                optimizer: tf
+                    .train
+                    .adam(),
+                loss: tf.losses.meanSquaredError
+            }
+            model.compile(compileParam);
+
+            // 모델에게 학습시키기
+            var fitParam = {
+                epochs: 100
+            };
+            model
+                .fit(원인, 결과, fitParam)
+                .then(function (result) {
+
+                    //새로운 데이터
+                    // let 다음주온도 = [15, 16, 17, 18];
+                    // let 다음주원인 = tf.tensor(다음주온도);
+                    let 다음주결과 = model.predict(원인);
+                    다음주결과.print()
+                });
+        </script>
+    </body>
+</html>
