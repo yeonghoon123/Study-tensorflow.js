@@ -3,17 +3,17 @@
     <head>
         <script
             src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+            <script src="housePrice.js"></script>
     </head>
     <body>
         <script>
             //수집한 데이터
-            let 온도 = [21, 22, 23, 24];
-            let 판매량 = [42, 44, 46, 48];
-            let 원인 = tf.tensor(온도);
-            let 결과 = tf.tensor(판매량);
+        
+            let 원인 = tf.tensor(보스톤_원인);
+            let 결과 = tf.tensor(보스톤_결과);
 
             //모델 만들기
-            let X = tf.input({shape: [1]});
+            let X = tf.input({shape: [13]});
             let Y = tf
                 .layers
                 .dense({units: 1})
@@ -29,7 +29,7 @@
 
             // 모델에게 학습시키기
             var fitParam = {
-                epochs: 10000,
+                epochs: 3000,
                 callbacks: {
                     onEpochEnd: function (epoch, logs) {
                         console.log("epoch", epoch, logs, "RMSE =>", Math.sqrt(logs.loss))

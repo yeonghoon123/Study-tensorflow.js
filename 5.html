@@ -6,7 +6,9 @@
     </head>
     <body>
         <script>
-            console.log(tf)
+            tf.loadLayersModel('localstorage://lemon').then(function(model){
+                model.predict(tf.tensor([20])).print()
+            });
         </script>
     </body>
-</html>
+</html>     
