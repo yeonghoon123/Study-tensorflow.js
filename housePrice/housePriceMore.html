@@ -29,7 +29,7 @@
 
             // 모델에게 학습시키기
             var fitParam = {
-                epochs: 100,
+                epochs: 1000,
                 callbacks: {
                     onEpochEnd: function (epoch, logs) {
                         console.log("epoch", epoch, logs, "RMSE =>", Math.sqrt(logs.loss))
