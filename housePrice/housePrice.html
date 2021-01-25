@@ -3,21 +3,31 @@
     <head>
         <script
             src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
-            <script src="housePrice.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis"></script>
+        <script src="housePrice.js"></script>
+
     </head>
     <body>
         <script>
             //수집한 데이터
-        
+
             let 원인 = tf.tensor(보스톤_원인);
             let 결과 = tf.tensor(보스톤_결과);
 
             //모델 만들기
             let X = tf.input({shape: [13]});
+            let H1 = tf
+                .layers
+                .dense({units: 13, activation: "relu"})
+                .apply(X);
+            let H2 = tf
+                .layers
+                .dense({units: 13, activation: "relu"})
+                .apply(H1);
             let Y = tf
                 .layers
                 .dense({units: 1})
-                .apply(X);
+                .apply(H2);
             let model = tf.model({inputs: X, outputs: Y});
             let compileParam = {
                 optimizer: tf
@@ -29,10 +39,17 @@
 
             // 모델에게 학습시키기
             var fitParam = {
-                epochs: 3000,
+                epochs: 100,
                 callbacks: {
                     onEpochEnd: function (epoch, logs) {
                         console.log("epoch", epoch, logs, "RMSE =>", Math.sqrt(logs.loss))
+                        // _history.push(logs);
+                        // tfvis
+                        //     .show
+                        //     .history({
+                        //         name: "loss",
+                        //         tab: "역사"
+                        //     }, _history, ['loss'])
                     }
                 }
             };
@@ -49,9 +66,5 @@
     </body>
 </html>
 
-<!-- 가중치 = weight
-편향 = bias 
-
-let weights = model.getWeight();
-let weight = weight[0].arraySync()[0][0]
-let bias = weight[1].arraySync()[0] -->
+<!-- 가중치 = weight 편향 = bias let weights = model.getWeight(); let weight =
+weight[0].arraySync()[0][0] let bias = weight[1].arraySync()[0] -->
