@@ -64,7 +64,7 @@ TensorFlow.js란?
 <br>
 <br>
 <br>
-<img src="">
+<img src="https://github.com/yeonghoon123/Study-tensorflow.js/blob/main/gitimages/housePrice.PNG">
 
 그 외에 종속변수값을 12개를 주고 독립변수에 값을 2가지를 주는 경우도 하였다.
 
@@ -76,4 +76,4 @@ TensorFlow.js란?
 <br>
 <br>
 <br>
-<img src="">
+<img src="https://github.com/yeonghoon123/Study-tensorflow.js/blob/main/gitimages/housePriceMore.PNG">
