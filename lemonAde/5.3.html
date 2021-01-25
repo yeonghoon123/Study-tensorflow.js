@@ -29,18 +29,28 @@
 
             // 모델에게 학습시키기
             var fitParam = {
-                epochs: 100
+                epochs: 100,
+                callbacks: {
+                    onEpochEnd: function (epoch, logs) {
+                        console.log("epoch", epoch, logs, "RMSE =>", Math.sqrt(logs.loss))
+                    }
+                }
             };
             model
                 .fit(원인, 결과, fitParam)
                 .then(function (result) {
 
-                    //새로운 데이터
-                    // let 다음주온도 = [15, 16, 17, 18];
-                    // let 다음주원인 = tf.tensor(다음주온도);
-                    let 다음주결과 = model.predict(원인);
+                    //새로운 데이터 let 다음주온도 = [15, 16, 17, 18]; let 다음주원인 = tf.tensor(다음주온도);
+                    let 다음주결과 = model.predict(원인)
                     다음주결과.print()
                 });
         </script>
     </body>
 </html>
+
+<!-- 가중치 = weight
+편향 = bias 
+
+let weights = model.getWeight();
+let weight = weight[0].arraySync()[0][0]
+let bias = weight[1].arraySync()[0] -->
